@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'apps.accounts',
     'apps.addresses',
+    'apps.profiles',
 ]
 
 MIDDLEWARE = [
@@ -154,7 +155,7 @@ REST_FRAMEWORK = {
 }
 
 SIMPLE_JWT = {
-    'ACCESS_TOKEN_LIFETIME': timedelta(hours=1),
+    'ACCESS_TOKEN_LIFETIME': timedelta(hours=10000),
     "REFRESH_TOKEN_LIFETIME": timedelta(days=7),
     'AUTH_HEADER_TYPES': ('Bearer',),
     "ROTATE_REFRESH_TOKENS": True,
