@@ -19,6 +19,7 @@ class UserManager(BaseUserManager):
 
 
 class User(AbstractUser, PermissionsMixin):
+    username = None
     ROLE_CHOSES =(
         ('customer', 'Customer'),
         ('admin', 'Admin'),
@@ -33,6 +34,7 @@ class User(AbstractUser, PermissionsMixin):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     deleted_at = models.DateTimeField(null=True, blank=True)
+    phone = models.CharField(max_length=20, null=True, blank=True)
 
 
     objects = UserManager()

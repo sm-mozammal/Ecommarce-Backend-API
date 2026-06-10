@@ -40,7 +40,7 @@ class LoginView(APIView):
         serializer = LoginSerializer(data = request.data)
 
         if serializer.is_valid():
-            user = serializer.validatedd_data
+            user = serializer.validated_data
             token = get_tokens(user)
             return Response(
                 {
@@ -51,7 +51,9 @@ class LoginView(APIView):
                         'email': user.email,
                         'name': user.name,
                         'role': user.role,
-                        'token': token,
+                        'phone': user.phone,
+                        'refresh_token': token['refresh'],
+                        'access_token': token['access'],
                     },
                 }
             )
