@@ -27,7 +27,11 @@ SECRET_KEY = 'django-insecure-bh^1oxmbbn%)c7$4zx^d*s0!*r&xkphxh)32!#cj59!kw@zcr1
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    "127.0.0.1",
+    "localhost",
+    "10.0.2.2",
+]
 
 # Default auto field
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
@@ -159,7 +163,7 @@ REST_FRAMEWORK = {
 }
 
 SIMPLE_JWT = {
-    'ACCESS_TOKEN_LIFETIME': timedelta(hours=10000),
+    'ACCESS_TOKEN_LIFETIME': timedelta(seconds=60),
     "REFRESH_TOKEN_LIFETIME": timedelta(days=7),
     'AUTH_HEADER_TYPES': ('Bearer',),
     "ROTATE_REFRESH_TOKENS": True,

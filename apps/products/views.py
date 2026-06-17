@@ -13,7 +13,7 @@ class CategoryViewSet(viewsets.ModelViewSet):
     serializer_class = CategorySerializer
 
     def get_permissions(self):
-        if self.request.method in ['POST', 'PUT', 'DELETE']:
+        if self.request.method in ['GET', 'POST', 'PUT', 'DELETE']:
             return [IsAdmin()]
         return super().get_permissions()
 
