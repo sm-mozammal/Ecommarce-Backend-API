@@ -13,7 +13,7 @@ class CategoryViewSet(viewsets.ModelViewSet):
     serializer_class = CategorySerializer
 
     def get_permissions(self):
-        if self.request.method in ['GET', 'POST', 'PUT', 'DELETE']:
+        if self.request.method in ['POST', 'PUT', 'DELETE']:
             return [IsAdmin()]
         return super().get_permissions()
 
@@ -100,3 +100,12 @@ class BrandViewSet(viewsets.ModelViewSet):
         if self.request.method in ['POST', 'PUT', 'DELETE']:
             return [IsAdmin()]
         return super().get_permissions()
+
+
+    def list(self, request , *args, **kwargs):
+        queryset = self.get_queryset().filter(deleted_at = None)
+        serializer = self.get_serializer(queryset, many=True)
+
+        return Response({
+            'status':'success','message':'Brands retrieved successfully','data':serializer.data}, status=200)
+        
